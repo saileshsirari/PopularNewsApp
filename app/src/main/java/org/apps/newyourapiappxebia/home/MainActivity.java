@@ -27,7 +27,7 @@ public class MainActivity extends BaseActivity  implements HasSupportFragmentInj
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
-//    @Inject
+    @Inject
     PopularArticlesFragment popularArticlesFragment;
 
     @Override
@@ -42,8 +42,8 @@ public class MainActivity extends BaseActivity  implements HasSupportFragmentInj
     private void addPopularFragment() {
 
 
-        popularArticlesFragment = new PopularArticlesFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.screen_container,popularArticlesFragment).commit();
+//        popularArticlesFragment = new PopularArticlesFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.screen_container,popularArticlesFragment).commit();
     }
 
     @Override

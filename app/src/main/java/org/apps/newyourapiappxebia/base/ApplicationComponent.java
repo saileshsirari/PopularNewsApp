@@ -16,7 +16,7 @@ import dagger.android.AndroidInjector;
         ApplicationModule.class,
         ActivityBindingModule.class,
         ServiceModule.class,
-        ArticleServiceModule.class
+        ArticleServiceModule.class,
 })
 public interface ApplicationComponent extends AndroidInjector<MyApplication> {
     void inject(MyApplication myApplication);

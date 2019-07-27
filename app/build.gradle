@@ -8,7 +8,8 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "org.apps.newyourapiappxebia.test.CustomTestRunner"
     }
     buildTypes {
         release {
@@ -65,6 +66,8 @@ dependencies {
 
     implementation "com.jakewharton:butterknife:$butterknifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
 
 }

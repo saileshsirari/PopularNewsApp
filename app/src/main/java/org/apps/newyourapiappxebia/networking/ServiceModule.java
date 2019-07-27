@@ -28,6 +28,7 @@ public abstract class ServiceModule {
 
 
 
+
     @Provides
     @Singleton
     static Gson provideGson() {
@@ -45,24 +46,11 @@ public abstract class ServiceModule {
                 .build();
     }
 
-    /*@Provides
-    @Singleton
-    @Named("gson_retrofit")
-    static  Retrofit provideGsonRetrofit(GsonConverterFactory gsonConverterFactory, @Named("base_url") String baseUrl){
-        Retrofit retrofitClient = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(gsonConverterFactory)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        return retrofitClient;
 
-    }
     @Provides
-    @Singleton
-    static GsonConverterFactory provideGsonConverterFactory() {
-        GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create(
-                new GsonBuilder().registerTypeAdapterFactory(AutoValueGsonFactory.create())
-                        .create());
-        return gsonConverterFactory;
-    }*/
+    @Named("default_items")
+    static int provideDefaultItems() {
+        return 7;
+    }
+
 }

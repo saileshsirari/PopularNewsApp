@@ -22,4 +22,5 @@ public abstract class NetworkModule {
     static String provideBaseUrl() {
         return "https://api.nytimes.com/svc/";
     }
+
 }

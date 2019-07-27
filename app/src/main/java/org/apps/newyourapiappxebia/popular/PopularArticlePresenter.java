@@ -5,12 +5,16 @@ import org.apps.newyourapiappxebia.di.ActivityScope;
 import org.apps.newyourapiappxebia.model.Article;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 
 @ActivityScope
 class PopularArticlePresenter implements PopluarArticleAdapter.PopularArticleClickedListener {
 
-    private static final int DEFAULT_DAYS = 7;
+
+    @Inject
+    @Named("default_items")
+    public int defaultDays  = 7;
     private final PopularArticlesViewModel viewModel;
     private final ArticleRequester articleRequester;
 
@@ -18,7 +22,7 @@ class PopularArticlePresenter implements PopluarArticleAdapter.PopularArticleCli
     PopularArticlePresenter(PopularArticlesViewModel viewModel, ArticleRequester articleRequester) {
         this.viewModel = viewModel;
         this.articleRequester = articleRequester;
-        loadArticles(DEFAULT_DAYS);
+        loadArticles(defaultDays);
     }
 
     private void loadArticles(int days) {
