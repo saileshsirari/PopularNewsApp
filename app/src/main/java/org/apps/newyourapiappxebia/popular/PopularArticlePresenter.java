@@ -45,7 +45,6 @@ class PopularArticlePresenter implements PopluarArticleAdapter.PopularArticleCli
     public void onArticleClicked(Article article) {
 
         try {
-            article = null;
             showarticleDetail(article);
         }catch (Exception e){
             Timber.e(e,"error  loading details");
