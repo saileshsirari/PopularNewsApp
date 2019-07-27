@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import dagger.android.AndroidInjection;
-import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjection;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -36,12 +34,23 @@ public abstract class BaseFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(layoutRes(), container, false);
         unbinder = ButterKnife.bind(this, view);
         onViewBound(view);
         disposables.addAll(subscriptions());
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        disposables.clear();
+        if (unbinder != null) {
+            unbinder.unbind();
+            unbinder = null;
+        }
     }
 
     protected Disposable[] subscriptions() {

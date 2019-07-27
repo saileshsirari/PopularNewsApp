@@ -63,7 +63,9 @@ public class PopularArticlesFragment extends BaseFragment {
                 viewModel.loading()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(loading -> {
-                    loadingView.setVisibility(loading ? View.VISIBLE : View.GONE);
+                    loadingView.setVisibility(
+
+                            loading ? View.VISIBLE : View.GONE);
                     articleList.setVisibility(loading ? View.GONE : View.VISIBLE);
                     errorText.setVisibility(loading ? View.GONE : errorText.getVisibility());
                 }),

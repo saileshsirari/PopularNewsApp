@@ -23,4 +23,10 @@ public abstract class NetworkModule {
         return "https://api.nytimes.com/svc/";
     }
 
+    @Provides
+    @Named("api_key")
+    static String provideApiKey() {
+        return "bAAu4mxlcuts3wdUGCNpKDSr9iD5Z7EB";
+    }
+
 }

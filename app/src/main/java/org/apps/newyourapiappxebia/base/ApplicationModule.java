@@ -15,8 +15,6 @@ public class ApplicationModule {
         this.application = application;
     }
 
-
-
     @Provides
     Context provideApplicationContext() {
         return application;

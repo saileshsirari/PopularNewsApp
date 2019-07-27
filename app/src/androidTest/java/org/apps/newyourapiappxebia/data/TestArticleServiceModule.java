@@ -7,5 +7,5 @@ import dagger.Module;
 public abstract class TestArticleServiceModule {
 
     @Binds
-    abstract ArticleService bindArticleService(TestArticleService repoService);
+    abstract ArticleService bindArticleService(TestArticleService testArticleService);
 }

@@ -11,14 +11,8 @@ public abstract class ArticleServiceModule {
 
     @Provides
     @Singleton
-    static ArticleService provideRepoService( Retrofit retrofit) {
+    static ArticleService provideArticleService(Retrofit retrofit) {
         return retrofit.create(ArticleService.class);
     }
 
-/*
-    @Provides
-    @Singleton
-    static RepoService provideGsonRepoService(@Named("gson_retrofit") Retrofit retrofit) {
-        return retrofit.create(RepoService.class);
-    }*/
 }

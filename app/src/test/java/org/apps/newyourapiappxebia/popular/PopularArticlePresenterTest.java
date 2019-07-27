@@ -18,6 +18,7 @@ import io.reactivex.Single;
 import io.reactivex.functions.Consumer;
 
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
@@ -43,17 +44,17 @@ public class PopularArticlePresenterTest {
     }
 
     @Test
-    public void reposLoaded() throws Exception {
-        List<Article> repos = setUpSuccess();
+    public void articlesLoaded() throws Exception {
+        List<Article> articles = setUpSuccess();
         initializePresenter();
 
-        verify(articleRequester).getArticles(anyInt());
-        verify(onSuccessConsumer).accept(repos);
+        verify(articleRequester).getArticles(anyInt(),anyString());
+        verify(onSuccessConsumer).accept(articles);
         verifyZeroInteractions(onErrorConsumer);
     }
 
     @Test
-    public void reposLoadedError() throws Exception {
+    public void articlesLoadedError() throws Exception {
         Throwable error = setUpError();
         initializePresenter();
 
@@ -83,28 +84,28 @@ public class PopularArticlePresenterTest {
     }
 
     @Test
-    public void onRepoClicked() throws Exception {
+    public void onArticleClicked() throws Exception {
         //TODO
     }
 
     private List<Article> setUpSuccess() {
         ArticleResponse response = TestUtils.loadJson("mock/get_popular_articles.json", ArticleResponse.class);
-        List<Article> repos = response.articles();
+        List<Article> articles = response.articles();
 
-        when(articleRequester.getArticles(anyInt())).thenReturn(Single.just(repos));
+        when(articleRequester.getArticles(anyInt(),anyString())).thenReturn(Single.just(articles));
 
-        return repos;
+        return articles;
     }
 
     private Throwable setUpError() {
         Throwable error = new IOException();
-        when(articleRequester.getArticles(anyInt())).thenReturn(Single.error(error));
+        when(articleRequester.getArticles(anyInt(),anyString())).thenReturn(Single.error(error));
 
         return error;
     }
 
     private void initializePresenter() {
-        presenter = new PopularArticlePresenter(viewModel, articleRequester);
+        presenter = new PopularArticlePresenter(viewModel, articleRequester,anyInt(),anyString());
     }
 
 }

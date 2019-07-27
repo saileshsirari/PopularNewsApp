@@ -20,23 +20,22 @@ import timber.log.Timber;
 class PopularArticlePresenter implements PopluarArticleAdapter.PopularArticleClickedListener {
 
 
-    @Inject
-    @Named("default_items")
-    public int defaultDays  = 7;
     private final PopularArticlesViewModel viewModel;
     private final ArticleRequester articleRequester;
     @Inject
     Context context;
-
     @Inject
-    PopularArticlePresenter(PopularArticlesViewModel viewModel, ArticleRequester articleRequester) {
+    PopularArticlePresenter(PopularArticlesViewModel viewModel,
+                            ArticleRequester articleRequester,
+                            @Named("default_items") int items ,
+                            @Named("api_key") String apiKey) {
         this.viewModel = viewModel;
         this.articleRequester = articleRequester;
-        loadArticles(defaultDays);
+        loadArticles(items,apiKey);
     }
 
-    private void loadArticles(int days) {
-        articleRequester.getArticles(days)
+    private void loadArticles(int days, String apiKey) {
+        articleRequester.getArticles(days,apiKey)
                 .doOnSubscribe(__ -> viewModel.loadingUpdated().accept(true))
                 .doOnEvent((d, t) -> viewModel.loadingUpdated().accept(false))
                 .subscribe(viewModel.articlesUpdated(), viewModel.onError());

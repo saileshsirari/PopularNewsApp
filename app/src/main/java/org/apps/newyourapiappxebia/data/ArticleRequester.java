@@ -5,6 +5,7 @@ import org.apps.newyourapiappxebia.model.Article;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
@@ -18,8 +19,8 @@ public class ArticleRequester {
         this.service = service;
     }
 
-    public Single<List<Article>> getArticles(int days) {
-        return service.getMostPopularArticles(days)
+    public Single<List<Article>> getArticles(int days, String apiKey) {
+        return service.getMostPopularArticles(days,apiKey)
                 .map(ArticleResponse::articles)
                 .subscribeOn(Schedulers.io());
     }

@@ -21,7 +21,7 @@ public class TestArticleService implements ArticleService {
     }
 
     @Override
-    public Single<ArticleResponse> getMostPopularArticles(int days) {
+    public Single<ArticleResponse> getMostPopularArticles(int days,String apiKey) {
         if (!sendError) {
             ArticleResponse response = testUtils.loadJson("mock/get_popular_articles.json", ArticleResponse.class);
             return Single.just(response);

@@ -20,5 +20,5 @@ public abstract class TestScreenBindingModule {
     @Binds
     @IntoMap
     @FragmentKey(PopularArticlesFragment.class)
-    abstract AndroidInjector.Factory<? extends Fragment> bindTrendingReposInjector(PopularArticlesComponent.Builder builder);
+    abstract AndroidInjector.Factory<? extends Fragment> bindPopularArticlesInjector(PopularArticlesComponent.Builder builder);
 }

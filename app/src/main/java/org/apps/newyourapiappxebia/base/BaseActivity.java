@@ -5,8 +5,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import dagger.android.AndroidInjection;
-import dagger.android.support.AndroidSupportInjection;
 
 abstract public class BaseActivity extends AppCompatActivity {
 
@@ -15,9 +13,6 @@ abstract public class BaseActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(layoutRes());
-
-
-
     }
 
     @LayoutRes
