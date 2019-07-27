@@ -21,6 +21,7 @@ class PopularArticlesViewModel {
     private final BehaviorRelay<List<Article>> articleRelay = BehaviorRelay.create();
     private final BehaviorRelay<Integer> errorRelay = BehaviorRelay.create();
     private final BehaviorRelay<Boolean> loadingRelay = BehaviorRelay.create();
+    private final BehaviorRelay<Article> articleDetailsRelay = BehaviorRelay.create();
 
     @Inject
     PopularArticlesViewModel() {
@@ -34,7 +35,9 @@ class PopularArticlesViewModel {
     Observable<List<Article>> articles() {
         return articleRelay;
     }
-
+    Observable<Article> articleDetail() {
+        return articleDetailsRelay;
+    }
     Observable<Integer> error() {
         return errorRelay;
     }
@@ -47,7 +50,9 @@ class PopularArticlesViewModel {
         errorRelay.accept(-1);
         return articleRelay;
     }
-
+    Consumer<Article> articleDetailUpdated() {
+        return articleDetailsRelay;
+    }
     Consumer<Throwable> onError() {
         return throwable -> {
             Timber.e(throwable, "Error loading Articles");
