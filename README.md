@@ -1,8 +1,11 @@
-Shows the popular news articles.
+
+
+
 This project is based on mvvm(p) with android dagger2 as DI.
+Shows the list of popular news articles.
 
 Build
-1. checkout the master branch.
+1. Checkout the master branch.
 2. Open android studio, file->open -> select root of project
 3. Wait for sync and run it.
 
