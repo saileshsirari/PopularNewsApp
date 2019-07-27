@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NewYorkApiAppXebia</string>
+    <string name="api_error_articles">Error loading Articles</string>
+
+</resources>
